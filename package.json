@@ -1,0 +1,39 @@
+{
+  "name": "min-ui",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "prettier": "prettier --write --config ./.prettierrc \"**/*.{js,ts,tsx,json}\"",
+    "convention": "pnpm run prettier && eslint --fix \"**/*.{js,ts,tsx}\"",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "kimjh96 <kimjhs@kakao.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.6.4",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  }
+}
