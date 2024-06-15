@@ -34,7 +34,7 @@ module.exports = {
         'newlines-between': 'always'
       }
     ],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['vite.config.ts'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['vite.config.mts'] }],
     'import/extensions': [
       'error',
       'ignorePackages',

@@ -14,20 +14,12 @@ export default defineConfig(() => {
         fileName: (fileName) => (fileName === 'cjs' ? 'index.js' : 'index.es.js')
       },
       rollupOptions: {
-        external: [...Object.keys(pkg.peerDependencies), /@emotion/g],
+        external: Object.keys(pkg.peerDependencies),
         output: {
           interop: 'auto'
         }
       }
     },
-    plugins: [
-      react({
-        jsxImportSource: '@emotion/react'
-      }),
-      dts({ insertTypesEntry: true })
-    ],
-    define: {
-      'process.env.NODE_ENV': '"production"'
-    }
+    plugins: [react(), dts()]
   };
 });
