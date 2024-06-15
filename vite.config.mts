@@ -8,7 +8,7 @@ export default defineConfig(() => {
   return {
     build: {
       lib: {
-        entry: 'src/index.ts',
+        entry: 'index.ts',
         name: 'min-ui',
         formats: ['cjs', 'es'],
         fileName: (fileName) => (fileName === 'cjs' ? 'index.js' : 'index.es.js')

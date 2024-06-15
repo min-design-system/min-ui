@@ -5,7 +5,8 @@ module.exports = {
     'airbnb/hooks',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'plugin:storybook/recommended'
   ],
   rules: {
     quotes: ['error', 'single'],
