@@ -31,4 +31,4 @@ export type ColorScaleKey =
   | 'violet';
 export type ColorScaleRange<T = never> = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | T;
 export type AlphaColorScaleKey = 'white' | 'black' | 'none';
-export type AlphaColorScaleRange = 5 | 20 | 40 | 60 | 80 | 95;
+export type AlphaColorScaleRange = 50 | 200 | 400 | 600 | 800 | 950;

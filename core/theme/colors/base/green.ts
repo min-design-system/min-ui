@@ -1,9 +1,9 @@
 import { ColorScaleRange, CSSValue } from './typing';
 
 const green: Record<ColorScaleRange, CSSValue> = {
-  100: '#DAF7E6',
-  200: '#B9F0D0',
-  300: '#88EBB3',
+  100: '#DDFBE9',
+  200: '#BDF5D5',
+  300: '#89ECB4',
   400: '#4EDA8A',
   500: '#25B865',
   600: '#1A9F54',

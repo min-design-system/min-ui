@@ -1,11 +1,13 @@
-import type { Palette } from './tokens/palette/typing';
-import type shadow from './tokens/shadow';
-import type spacing from './tokens/spacing';
-import type { Typography } from './tokens/typography/typing';
+import type { SemanticColor } from './colors/typing';
+import type shadow from './shadow';
+import type spacing from './spacing';
+import type { Typography } from './typography/typing';
+
+export type ThemeMode = 'light' | 'dark';
 
 export default interface Theme {
-  mode: 'light' | 'dark';
-  palette: Palette;
+  mode: ThemeMode;
+  semanticColor: SemanticColor;
   typography: Typography;
   spacing: typeof spacing;
   shadow: typeof shadow;
