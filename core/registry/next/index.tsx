@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 import RegistryClient from './Client';
 import RegistryServer from './Server';
 
-function NextjsRegistry({ children }: PropsWithChildren) {
+function NextRegistry({ children }: PropsWithChildren) {
   return (
     <RegistryServer>
       <RegistryClient>{children}</RegistryClient>
@@ -11,4 +11,4 @@ function NextjsRegistry({ children }: PropsWithChildren) {
   );
 }
 
-export default NextjsRegistry;
+export default NextRegistry;
