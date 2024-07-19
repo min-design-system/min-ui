@@ -1,15 +1,16 @@
 import { ElementType } from 'react';
 
-import cache from '@core/styled/cache';
-import Updater from '@core/styled/registry/serialize/Updater';
+import Updater from '@core/styled/serialize/Updater';
+import light from '@core/theme/light';
+import convertHash from '@utils/convertHash';
+
+import cache from './cache';
 import {
   AsyncStyledValueSerialize,
   CreateStyledFunction,
   StyledValue,
   StyledArrayFunctionWithoutTheme
-} from '@core/styled/typing';
-import light from '@core/theme/light';
-import convertHash from '@utils/convertHash';
+} from './typing';
 
 const styled: CreateStyledFunction = (Tag) => {
   return (styledArray, ...styledArrayFunctions) => {

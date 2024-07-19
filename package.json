@@ -9,12 +9,33 @@
     "dist"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./ThemeProvider": "./dist/core/setup/ThemeProvider.js",
-    "./styled": "./dist/core/styled/index.js",
-    "./styled/registry/nextjs": "./dist/core/styled/registry/nextjs/index.js",
-    "./utils": "./dist/index.js"
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/*/index.es.js",
+      "require": "./dist/*/index.js",
+      "types": "./dist/*/index.d.ts"
+    },
+    "./styled": {
+      "import": "./dist/styled/index.es.js",
+      "require": "./dist/styled/index.js",
+      "types": "./dist/styled/index.d.ts"
+    },
+    "./setup/ThemeProvider": {
+      "import": "./dist/setup/ThemeProvider.es.js",
+      "require": "./dist/setup/ThemeProvider.js",
+      "types": "./dist/setup/ThemeProvider.d.ts"
+    },
+    "./registry/NextRegistry": {
+      "import": "./dist/registry/next/index.es.js",
+      "require": "./dist/registry/next/index.js",
+      "types": "./dist/registry/next/index.d.ts"
+    }
   },
+  "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "prettier": "prettier --write --config ./.prettierrc \"**/*.{js,ts,tsx,json}\"",
@@ -55,6 +76,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-storybook": "^0.8.0",
+    "glob": "^11.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
@@ -65,7 +87,7 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
-    "next": "^12.0.0 || ^13.0.0 || ^14.0.0",
+    "next": "^13.0.0 || ^14.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
@@ -77,5 +99,8 @@
   "lint-staged": {
     "*.{js,ts,mts,tsx,json,mdx}": "prettier --write",
     "*.{js,ts,mts,tsx}": "eslint --fix"
+  },
+  "dependencies": {
+    "next": "^14.2.5"
   }
 }

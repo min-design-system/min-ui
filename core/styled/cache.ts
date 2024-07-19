@@ -3,6 +3,8 @@ import * as React from 'react';
 let serverCache: (() => string[]) | null;
 
 try {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   serverCache = React.cache(() => []);
 } catch {
   serverCache = null;
