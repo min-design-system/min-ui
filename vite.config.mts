@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
 
-const withUseClientFileNames = ['Updater', 'Client', 'Inserter'];
+const withUseClientChunkNames = ['Updater', 'Client', 'next/serialize/Inserter'];
 const inputs = [
   {
     name: 'components',
@@ -52,8 +52,8 @@ export default defineConfig(() => {
             interop: 'auto',
             format: 'cjs',
             banner: (chunk) => {
-              const hasWithUseClientFileName = withUseClientFileNames.some(
-                (withUseClientFileName) => chunk.name.indexOf(withUseClientFileName) !== -1
+              const hasWithUseClientFileName = withUseClientChunkNames.some(
+                (withUseClientChunkName) => chunk.name.indexOf(withUseClientChunkName) !== -1
               );
 
               if (hasWithUseClientFileName) {
@@ -68,8 +68,8 @@ export default defineConfig(() => {
             interop: 'auto',
             format: 'es',
             banner: (chunk) => {
-              const hasWithUseClientFileName = withUseClientFileNames.some(
-                (withUseClientFileName) => chunk.name.indexOf(withUseClientFileName) !== -1
+              const hasWithUseClientFileName = withUseClientChunkNames.some(
+                (withUseClientChunkName) => chunk.name.indexOf(withUseClientChunkName) !== -1
               );
 
               if (hasWithUseClientFileName) {

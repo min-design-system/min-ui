@@ -1,10 +1,11 @@
 import { ElementType } from 'react';
 
-import Updater from '@core/styled/serialize/Updater';
 import light from '@core/theme/light';
 import convertHash from '@utils/convertHash';
 
 import cache from './cache';
+import Inserter from './serialize/Inserter';
+import Updater from './serialize/Updater';
 import {
   AsyncStyledValueSerialize,
   CreateStyledFunction,
@@ -68,7 +69,7 @@ const styled: CreateStyledFunction = (Tag) => {
 
       const collectedStyles = cache();
       const hashId = convertHash(reducedStyle.replace(/\s/g, '').replace(/\n/g, ''));
-      const className = `rsc-css-${hashId}`;
+      const className = `min-ui-css-${hashId}`;
       const content = `.${className} { ${reducedStyle} }`;
 
       collectedStyles.push(content);
@@ -78,14 +79,17 @@ const styled: CreateStyledFunction = (Tag) => {
       const FinalTag = Tag as ElementType;
 
       return (
-        <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize}>
-          <FinalTag
-            {...newProps}
-            className={[className, newProps?.className]
-              .filter((newClassName) => newClassName)
-              .join(' ')}
-          />
-        </Updater>
+        <>
+          <Inserter content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+          <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize}>
+            <FinalTag
+              {...newProps}
+              className={[className, newProps?.className]
+                .filter((newClassName) => newClassName)
+                .join(' ')}
+            />
+          </Updater>
+        </>
       );
     };
   };

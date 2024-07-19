@@ -1,33 +1,15 @@
-import { PropsWithChildren } from 'react';
-
 import { AsyncStyledValueSerialize } from '@core/styled/typing';
 import convertHash from '@utils/convertHash';
 
-interface UpdaterProps {
+interface InserterProps {
   content: string;
   asyncStyledValueSerialize: AsyncStyledValueSerialize;
 }
 
-function Updater({
-  children,
-  content,
-  asyncStyledValueSerialize
-}: PropsWithChildren<UpdaterProps>) {
-  if (typeof document !== 'undefined') {
+function Inserter({ content, asyncStyledValueSerialize }: InserterProps) {
+  if (typeof document === 'undefined') {
     const hashId = convertHash(content.replace(/ /g, '').replace(/\n/g, ''));
-    const prevStyle = document.getElementById(`min-ui-style-${hashId}`);
-    let styleElement;
-
-    if (prevStyle) {
-      styleElement = prevStyle;
-      prevStyle.innerHTML = content;
-    } else {
-      const style = document.createElement('style');
-      styleElement = style;
-      style.id = `min-ui-style-${hashId}`;
-      style.innerHTML = content;
-      document.head.appendChild(style);
-    }
+    let styleContent = content;
 
     Object.keys(asyncStyledValueSerialize).forEach((key) => {
       const asKey = key as keyof typeof asyncStyledValueSerialize;
@@ -35,7 +17,7 @@ function Updater({
       const promise = asyncStyledValueSerialize[asKey];
 
       promise?.then((styledValue) => {
-        styleElement.innerHTML = styleElement.innerHTML.replace(
+        styleContent = styleContent.replace(
           `[pending:${asKey}]`,
           typeof styledValue === 'string'
             ? styledValue
@@ -45,9 +27,16 @@ function Updater({
         );
       });
     });
+
+    return (
+      <style
+        id={`min-ui-server-style-${hashId}`}
+        dangerouslySetInnerHTML={{ __html: styleContent }}
+      />
+    );
   }
 
-  return children;
+  return null;
 }
 
-export default Updater;
+export default Inserter;
