@@ -95,30 +95,25 @@ export default defineConfig(() => {
       dts({
         beforeWriteFile: (filePath, content) => {
           let newPath = filePath;
+          let newContent = content;
 
           inputs.forEach(({ name, pullUp }) => {
-            if (pullUp) newPath = newPath.replace(`/${name}`, '');
+            if (pullUp) {
+              newPath = newPath.replace(`/${name}`, '');
+              // eslint-disable-next-line
+              newContent = content.replace(/from '\.\.\/\.\.\//g, "from '../");
+            }
           });
 
-          return { filePath: newPath, content };
+          return { filePath: newPath, content: newContent };
         }
       })
     ],
     resolve: {
-      alias: [
-        {
-          find: '@components',
-          replacement: path.resolve(__dirname, 'components')
-        },
-        {
-          find: '@core',
-          replacement: path.resolve(__dirname, 'core')
-        },
-        {
-          find: '@utils',
-          replacement: path.resolve(__dirname, 'utils')
-        }
-      ]
+      alias: inputs.map(({ name }) => ({
+        find: `@${name}`,
+        replacement: path.resolve(__dirname, name)
+      }))
     }
   };
 });

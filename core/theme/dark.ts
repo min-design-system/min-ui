@@ -1,7 +1,7 @@
 import { alpha, blue, gray, green, mint, red } from './colors/base';
 import shadow from './shadow';
 import spacing from './spacing';
-import type Theme from './typing';
+import Theme from './typing';
 import { body, caption, display, heading } from './typography';
 
 const dark: Theme = {

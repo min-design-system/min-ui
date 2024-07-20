@@ -14,6 +14,7 @@ import {
   StyledArrayFunctionWithoutTheme
 } from './typing';
 
+// TODO 중복 로직 모듈화
 const styled: CreateStyledFunction = (Tag) => {
   return (styledArray, ...styledArrayFunctions) => {
     const asyncStyledValueSerialize: AsyncStyledValueSerialize = {};

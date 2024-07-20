@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import type { ThemeMode } from '@core/theme/typing';
+import { ThemeMode } from '@core/theme/typing';
 
 const ThemeContext = createContext<ThemeMode>('light');
 
