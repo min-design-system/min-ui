@@ -8,7 +8,12 @@ import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
 
-const withUseClientChunkNames = ['Updater', 'Client', 'next/serialize/Inserter'];
+const withUseClientChunkNameTokens = [
+  'Updater',
+  'Client',
+  'next/serialize/Inserter',
+  'InserterGuard'
+];
 const inputs = [
   {
     name: 'components',
@@ -52,11 +57,12 @@ export default defineConfig(() => {
             interop: 'auto',
             format: 'cjs',
             banner: (chunk) => {
-              const hasWithUseClientFileName = withUseClientChunkNames.some(
-                (withUseClientChunkName) => chunk.name.indexOf(withUseClientChunkName) !== -1
+              const hasWithUseClientChunkNameToken = withUseClientChunkNameTokens.some(
+                (withUseClientChunkNameToken) =>
+                  chunk.name.indexOf(withUseClientChunkNameToken) !== -1
               );
 
-              if (hasWithUseClientFileName) {
+              if (hasWithUseClientChunkNameToken) {
                 return '"use client"';
               }
 
@@ -68,11 +74,12 @@ export default defineConfig(() => {
             interop: 'auto',
             format: 'es',
             banner: (chunk) => {
-              const hasWithUseClientFileName = withUseClientChunkNames.some(
-                (withUseClientChunkName) => chunk.name.indexOf(withUseClientChunkName) !== -1
+              const hasWithUseClientChunkNameToken = withUseClientChunkNameTokens.some(
+                (withUseClientChunkNameToken) =>
+                  chunk.name.indexOf(withUseClientChunkNameToken) !== -1
               );
 
-              if (hasWithUseClientFileName) {
+              if (hasWithUseClientChunkNameToken) {
                 return '"use client"';
               }
 

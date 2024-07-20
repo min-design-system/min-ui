@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { useInsertionEffect } from 'react';
 
 import { AsyncStyledValueSerialize } from '@core/styled/typing';
 import convertHash from '@utils/convertHash';
@@ -8,25 +8,20 @@ interface UpdaterProps {
   asyncStyledValueSerialize: AsyncStyledValueSerialize;
 }
 
-function Updater({
-  children,
-  content,
-  asyncStyledValueSerialize
-}: PropsWithChildren<UpdaterProps>) {
-  if (typeof document !== 'undefined') {
-    const hashId = convertHash(content.replace(/ /g, '').replace(/\n/g, ''));
-    const prevStyle = document.getElementById(`min-ui-style-${hashId}`);
-    let styleElement;
+function Updater({ content, asyncStyledValueSerialize }: UpdaterProps) {
+  useInsertionEffect(() => {
+    const hashId = convertHash(content);
+    let newStyleElement = null;
+    const prevStyleElement = document.head.querySelector(`#min-ui-style-${hashId}`);
 
-    if (prevStyle) {
-      styleElement = prevStyle;
-      prevStyle.innerHTML = content;
+    if (prevStyleElement) {
+      prevStyleElement.innerHTML = content;
+      newStyleElement = prevStyleElement;
     } else {
-      const style = document.createElement('style');
-      styleElement = style;
-      style.id = `min-ui-style-${hashId}`;
-      style.innerHTML = content;
-      document.head.appendChild(style);
+      newStyleElement = document.createElement('style');
+      newStyleElement.id = `min-ui-style-${hashId}`;
+      newStyleElement.innerHTML = content;
+      document.head.appendChild(newStyleElement);
     }
 
     Object.keys(asyncStyledValueSerialize).forEach((key) => {
@@ -35,19 +30,22 @@ function Updater({
       const promise = asyncStyledValueSerialize[asKey];
 
       promise?.then((styledValue) => {
-        styleElement.innerHTML = styleElement.innerHTML.replace(
-          `[pending:${asKey}]`,
-          typeof styledValue === 'string'
-            ? styledValue
-            : Object.entries(styledValue)
-                .map(([k, v]) => `${k}:${v}`)
-                .join(';')
-        );
+        newStyleElement.innerHTML = newStyleElement.innerHTML
+          .replace(
+            `[pending:${asKey}]`,
+            typeof styledValue === 'string'
+              ? styledValue
+              : Object.entries(styledValue)
+                  .map(([k, v]) => `${k}:${v}`)
+                  .join(';')
+          )
+          .replace(/\s+/g, ' ')
+          .replace(/\n/g, '');
       });
     });
-  }
+  }, [content, asyncStyledValueSerialize]);
 
-  return children;
+  return null;
 }
 
 export default Updater;

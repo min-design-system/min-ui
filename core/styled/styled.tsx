@@ -1,5 +1,6 @@
 import { ElementType } from 'react';
 
+import InserterGuard from '@core/styled/serialize/InserterGuard';
 import light from '@core/theme/light';
 import convertHash from '@utils/convertHash';
 
@@ -68,9 +69,10 @@ const styled: CreateStyledFunction = (Tag) => {
       });
 
       const collectedStyles = cache();
-      const hashId = convertHash(reducedStyle.replace(/\s/g, '').replace(/\n/g, ''));
+      const compactReducedStyle = reducedStyle.replace(/\s+/g, ' ').replace(/\n/g, '');
+      const hashId = convertHash(compactReducedStyle);
       const className = `min-ui-css-${hashId}`;
-      const content = `.${className} { ${reducedStyle} }`;
+      const content = `.${className} {${compactReducedStyle}}`;
 
       collectedStyles.push(content);
 
@@ -80,15 +82,18 @@ const styled: CreateStyledFunction = (Tag) => {
 
       return (
         <>
-          <Inserter content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
-          <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize}>
-            <FinalTag
-              {...newProps}
-              className={[className, newProps?.className]
-                .filter((newClassName) => newClassName)
-                .join(' ')}
-            />
-          </Updater>
+          <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+          <FinalTag
+            {...newProps}
+            className={[className, newProps?.className]
+              .filter((newClassName) => newClassName)
+              .join(' ')}
+          >
+            <InserterGuard>
+              <Inserter content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+            </InserterGuard>
+            {newProps?.children}
+          </FinalTag>
         </>
       );
     };
