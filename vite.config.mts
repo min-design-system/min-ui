@@ -8,12 +8,7 @@ import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
 
-const withUseClientChunkNameTokens = [
-  'Updater',
-  'Client',
-  'next/serialize/Inserter',
-  'InserterGuard'
-];
+const withUseClientChunkNameTokens = ['Updater', 'Client', 'InserterGuard'];
 const inputs = [
   {
     name: 'components',
@@ -37,7 +32,7 @@ export default defineConfig(() => {
         name: 'min-ui'
       },
       rollupOptions: {
-        external: [...Object.keys(pkg.peerDependencies), 'next/navigation', /jsx-runtime/g],
+        external: [...Object.keys(pkg.peerDependencies), /jsx-runtime/g],
         input: Object.fromEntries(
           inputs
             .map(({ name, pullUp }) =>

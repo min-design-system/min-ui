@@ -28,11 +28,6 @@
       "import": "./dist/setup/ThemeProvider.es.js",
       "require": "./dist/setup/ThemeProvider.js",
       "types": "./dist/setup/ThemeProvider.d.ts"
-    },
-    "./registry/NextRegistry": {
-      "import": "./dist/registry/next/index.es.js",
-      "require": "./dist/registry/next/index.js",
-      "types": "./dist/registry/next/index.d.ts"
     }
   },
   "sideEffects": false,
@@ -87,20 +82,11 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
-    "next": "^13.0.0 || ^14.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
   },
   "lint-staged": {
     "*.{js,ts,mts,tsx,json,mdx}": "prettier --write",
     "*.{js,ts,mts,tsx}": "eslint --fix"
-  },
-  "dependencies": {
-    "next": "^14.2.5"
   }
 }
