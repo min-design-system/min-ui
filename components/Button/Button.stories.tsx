@@ -8,6 +8,14 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
+  argTypes: {
+    prefixIcon: {
+      control: false
+    },
+    suffixIcon: {
+      control: false
+    }
+  },
   tags: ['autodocs']
 } satisfies Meta<typeof Button>;
 
@@ -16,6 +24,51 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Button'
+    children: 'Button',
+    variant: 'default',
+    size: 'medium',
+    color: 'primary',
+    rounded: false,
+    compacted: false
+  }
+};
+
+export const CTA: Story = {
+  args: {
+    children: 'Button',
+    variant: 'cta',
+    color: 'primary',
+    rounded: false
+  }
+};
+
+export const Toggle: Story = {
+  args: {
+    children: 'Button',
+    variant: 'toggle',
+    size: 'medium',
+    color: 'primary',
+    selected: false,
+    rounded: false,
+    compacted: false
+  }
+};
+
+export const Text: Story = {
+  args: {
+    children: 'Button',
+    variant: 'text',
+    size: 'medium',
+    color: 'primary'
+  }
+};
+
+export const ToggleText: Story = {
+  args: {
+    children: 'Button',
+    variant: 'toggleText',
+    size: 'medium',
+    color: 'primary',
+    selected: false
   }
 };

@@ -1,18 +1,72 @@
-import { ButtonHTMLAttributes, forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 
-import { StyledButton } from './Button.styles';
-
-// TODO Props 타이핑 공통화, 고도화
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+import {
+  DefaultButton,
+  CTAButton,
+  ToggleButton,
+  TextButton,
+  ToggleTextButton
+} from './Button.styles';
+import { ButtonProps, DefaultButtonProps } from './Button.typing';
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(function Button(
-  { children, ...props },
+  { children, variant, color, prefixIcon, suffixIcon, ...props },
   ref
 ) {
+  if (variant === 'toggleText') {
+    return (
+      <ToggleTextButton ref={ref} variant={variant} color={color} {...props}>
+        {prefixIcon}
+        {children}
+        {suffixIcon}
+      </ToggleTextButton>
+    );
+  }
+
+  if (variant === 'text') {
+    return (
+      <TextButton ref={ref} variant={variant} color={color} {...props}>
+        {prefixIcon}
+        {children}
+        {suffixIcon}
+      </TextButton>
+    );
+  }
+
+  const isOnlyIcon = !children && (!!prefixIcon || !!suffixIcon);
+
+  if (variant === 'toggle') {
+    return (
+      <ToggleButton ref={ref} variant={variant} color={color} onlyIcon={isOnlyIcon} {...props}>
+        {prefixIcon}
+        {children}
+        {suffixIcon}
+      </ToggleButton>
+    );
+  }
+
+  if (variant === 'cta') {
+    return (
+      <CTAButton ref={ref} variant={variant} color={color} onlyIcon={isOnlyIcon} {...props}>
+        {prefixIcon}
+        {children}
+        {suffixIcon}
+      </CTAButton>
+    );
+  }
+
   return (
-    <StyledButton ref={ref} {...props}>
+    <DefaultButton
+      ref={ref}
+      variant={variant}
+      color={color as DefaultButtonProps['color']}
+      onlyIcon={isOnlyIcon}
+      {...props}
+    >
+      {prefixIcon}
       {children}
-    </StyledButton>
+      {suffixIcon}
+    </DefaultButton>
   );
 });
 

@@ -1,12 +1,11 @@
 import { CSSValue } from '@core/theme/colors/base/typing';
 
-export type BrandColorKey = 'primary' | 'secondary' | 'tertiary' | 'danger';
+export type BrandColorKey = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'neutral';
 
 export interface SemanticColor {
   contents: Record<
-    | Extract<BrandColorKey, 'primary' | 'danger'>
+    | Extract<BrandColorKey, 'primary' | 'danger' | 'neutral'>
     | 'default'
-    | 'neutral'
     | 'inverse'
     | 'disabled'
     | 'black'
@@ -18,13 +17,12 @@ export interface SemanticColor {
   >;
   background: Record<'default' | 'strong' | 'dark', CSSValue>;
   surface: Record<
-    | Extract<BrandColorKey, 'primary' | 'danger'>
+    | Extract<BrandColorKey, 'primary' | 'danger' | 'neutral'>
     | `${Extract<BrandColorKey, 'primary' | 'danger'>}Weak`
     | 'default'
     | 'strong'
     | 'disabled'
     | 'inverse'
-    | 'neutral'
     | 'colorMint'
     | 'colorBlue'
     | 'colorMintWeak'
@@ -32,7 +30,7 @@ export interface SemanticColor {
     CSSValue
   >;
   border: Record<
-    Extract<BrandColorKey, 'danger'> | 'default' | 'weak' | 'strong' | 'neutral' | 'none',
+    Extract<BrandColorKey, 'danger' | 'neutral'> | 'default' | 'weak' | 'strong' | 'none',
     CSSValue
   >;
 }
