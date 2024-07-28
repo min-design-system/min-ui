@@ -6,6 +6,7 @@ export type StyledValue = string | number;
 
 export type StyledProps<T extends keyof JSX.IntrinsicElements, P> = ComponentPropsWithRef<T> & {
   theme: Theme;
+  globalStyle?: boolean;
 } & P;
 
 export type StyledPropsWithoutTheme<T extends keyof JSX.IntrinsicElements, P> = Omit<

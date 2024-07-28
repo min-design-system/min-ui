@@ -4,7 +4,9 @@ import InserterGuard from '@core/styled/serialize/InserterGuard';
 import light from '@core/theme/light';
 import convertHash from '@utils/convertHash';
 
+import attributes from './attributes';
 import cache from './cache';
+import events from './events';
 import Inserter from './serialize/Inserter';
 import Updater from './serialize/Updater';
 import {
@@ -73,20 +75,49 @@ const styled: CreateStyledFunction = (Tag) => {
       const compactReducedStyle = reducedStyle.replace(/\s+/g, ' ').replace(/\n/g, '');
       const hashId = convertHash(compactReducedStyle);
       const className = `min-ui-css-${hashId}`;
-      const content = `.${className} {${compactReducedStyle}}`;
+      const isGlobalStyle = Tag === 'style' && newProps?.globalStyle;
+      const content = isGlobalStyle
+        ? compactReducedStyle
+        : `.${className} {${compactReducedStyle}}`;
 
       collectedStyles.push(content);
 
       delete newProps.theme;
 
+      if (isGlobalStyle) {
+        return (
+          <>
+            <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+            <InserterGuard>
+              <Inserter content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+            </InserterGuard>
+          </>
+        );
+      }
+
       const FinalTag = Tag as ElementType;
+      const filteredProps = Object.keys(newProps)
+        .map((key) => {
+          if (
+            attributes.includes(key.toLocaleLowerCase()) ||
+            events.includes(key.toLocaleLowerCase())
+          ) {
+            return {
+              [key]: newProps[key as keyof typeof newProps]
+            };
+          }
+
+          return null;
+        })
+        .filter((filteredProp) => filteredProp)
+        .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
       return (
         <>
           <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
           <FinalTag
-            {...newProps}
-            className={[className, newProps?.className]
+            {...filteredProps}
+            className={[className, filteredProps?.className]
               .filter((newClassName) => newClassName)
               .join(' ')}
           >

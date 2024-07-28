@@ -13,6 +13,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
   { children, variant, color, prefixIcon, suffixIcon, ...props },
   ref
 ) {
+  const isOnlyIcon = !children && (!!prefixIcon || !!suffixIcon);
+
   if (variant === 'toggleText') {
     return (
       <ToggleTextButton ref={ref} variant={variant} color={color} {...props}>
@@ -32,8 +34,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
       </TextButton>
     );
   }
-
-  const isOnlyIcon = !children && (!!prefixIcon || !!suffixIcon);
 
   if (variant === 'toggle') {
     return (

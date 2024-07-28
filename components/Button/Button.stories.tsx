@@ -29,7 +29,8 @@ export const Default: Story = {
     size: 'medium',
     color: 'primary',
     rounded: false,
-    compacted: false
+    compacted: false,
+    disabled: false
   }
 };
 
@@ -38,7 +39,8 @@ export const CTA: Story = {
     children: 'Button',
     variant: 'cta',
     color: 'primary',
-    rounded: false
+    rounded: false,
+    disabled: false
   }
 };
 
@@ -50,7 +52,8 @@ export const Toggle: Story = {
     color: 'primary',
     selected: false,
     rounded: false,
-    compacted: false
+    compacted: false,
+    disabled: false
   }
 };
 
@@ -59,7 +62,8 @@ export const Text: Story = {
     children: 'Button',
     variant: 'text',
     size: 'medium',
-    color: 'primary'
+    color: 'primary',
+    disabled: false
   }
 };
 
@@ -69,6 +73,7 @@ export const ToggleText: Story = {
     variant: 'toggleText',
     size: 'medium',
     color: 'primary',
-    selected: false
+    selected: false,
+    disabled: false
   }
 };
