@@ -38,7 +38,13 @@ export default defineConfig(() => {
             .map(({ name, pullUp }) =>
               glob
                 .sync(`${name}/**/*.{ts,tsx}`, {
-                  ignore: ['**/*.d.ts', '**/*.styles.{ts,tsx}', '**/*.stories.tsx', '**/typing.ts']
+                  ignore: [
+                    '**/*.d.ts',
+                    '**/*.styles.{ts,tsx}',
+                    '**/*.stories.tsx',
+                    '**/typing.ts',
+                    '**/*.typing.ts'
+                  ]
                 })
                 .map((file) => [
                   pullUp ? relative(name, file.slice(0, file.length - extname(file).length)) : file,
