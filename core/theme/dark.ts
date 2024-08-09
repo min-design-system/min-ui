@@ -44,7 +44,7 @@ const dark: Theme = {
       danger: red['500'],
       default: gray['700'],
       weak: gray['800'],
-      strong: gray['100'],
+      stronger: gray['100'],
       neutral: gray['500'],
       none: alpha.none
     }

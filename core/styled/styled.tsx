@@ -112,6 +112,26 @@ const styled: CreateStyledFunction = (Tag) => {
         .filter((filteredProp) => filteredProp)
         .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
+      // TODO 더 나은 방법 고민
+      if (FinalTag === 'input') {
+        return (
+          <>
+            <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+            <InserterGuard>
+              <Inserter content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
+            </InserterGuard>
+            <FinalTag
+              {...filteredProps}
+              className={[className, filteredProps?.className]
+                .filter((newClassName) => newClassName)
+                .join(' ')}
+            >
+              {newProps?.children}
+            </FinalTag>
+          </>
+        );
+      }
+
       return (
         <>
           <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />

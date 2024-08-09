@@ -30,6 +30,7 @@ function Inserter({ content, asyncStyledValueSerialize }: InserterProps) {
     });
   });
 
+  // eslint-disable-next-line react/no-danger
   return <style id={`min-ui-style-${hashId}`} dangerouslySetInnerHTML={{ __html: newContent }} />;
 }
 

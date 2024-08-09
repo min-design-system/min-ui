@@ -19,7 +19,9 @@ export const DefaultButton = styled.button<
   cursor: pointer;
   border: 1px solid transparent;
   background-color: transparent;
-  border-radius: 8px;
+  // TODO number 가 정상 변환되지 않는 문제 수정
+  // border-radius: ${({ rounded }) => (rounded ? 999 : 8)}px;
+  border-radius: ${({ rounded }) => (rounded ? '999px' : '8px')};
 
   ${({
     color,
@@ -29,6 +31,7 @@ export const DefaultButton = styled.button<
   }) => {
     switch (color) {
       case 'secondary':
+        // TODO Return Type CSSProperties 추론이 가능하도록 수정
         return `
           background-color: ${surface.default};
           border-color: ${border.default};
@@ -125,9 +128,8 @@ export const DefaultButton = styled.button<
     `;
   }};
 
-  ${({ rounded }) => (rounded ? 'border-radius: 999px;' : '')};
-
   &:disabled {
+    // TODO Icon color disabled 처리 필요
     cursor: not-allowed;
     border-color: transparent;
     background-color: ${({
@@ -156,7 +158,7 @@ export const CTAButton = styled.button<
   cursor: pointer;
   border: 1px solid transparent;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: ${({ rounded }) => (rounded ? '999px' : '8px')};
 
   ${({
     color,
@@ -223,8 +225,6 @@ export const CTAButton = styled.button<
       line-height: ${lineHeight.default};
     `};
 
-  ${({ rounded }) => (rounded ? 'border-radius: 999px;' : '')};
-
   &:disabled {
     cursor: not-allowed;
     border-color: transparent;
@@ -252,7 +252,7 @@ export const ToggleButton = styled.button<
   cursor: pointer;
   border: 1px solid transparent;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: ${({ rounded }) => (rounded ? '999px' : '8px')};
 
   ${({
     color,
@@ -351,8 +351,6 @@ export const ToggleButton = styled.button<
       line-height: ${lineHeight};
     `;
   }};
-
-  ${({ rounded }) => (rounded ? 'border-radius: 999px;' : '')};
 
   &:disabled {
     cursor: not-allowed;

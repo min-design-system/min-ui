@@ -30,7 +30,7 @@ export interface SemanticColor {
     CSSValue
   >;
   border: Record<
-    Extract<BrandColorKey, 'danger' | 'neutral'> | 'default' | 'weak' | 'strong' | 'none',
+    Extract<BrandColorKey, 'danger' | 'neutral'> | 'default' | 'weak' | 'stronger' | 'none',
     CSSValue
   >;
 }
