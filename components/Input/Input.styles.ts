@@ -24,7 +24,7 @@ export const DefaultInputContainer = styled.div<
     }
   }) => surface.default};
 
-  ${({ size, compacted }) => {
+  ${({ size, compacted, rounded }) => {
     let horizontalPadding = 11;
     let verticalPadding = 11;
     let gap = 12;
@@ -35,15 +35,23 @@ export const DefaultInputContainer = styled.div<
         verticalPadding = 8;
         gap = 9;
 
-        if (compacted) {
-          horizontalPadding = 8;
+        if (compacted && !rounded) {
+          horizontalPadding = 4;
           verticalPadding = 4;
-          gap = 8;
+          gap = 5;
+        } else if (compacted && rounded) {
+          horizontalPadding = 6;
+          verticalPadding = 4;
+          gap = 5;
         }
         break;
       default:
-        if (compacted) {
+        if (compacted && !rounded) {
           horizontalPadding = 7;
+          verticalPadding = 7;
+          gap = 8;
+        } else if (compacted && rounded) {
+          horizontalPadding = 9;
           verticalPadding = 7;
           gap = 8;
         }
