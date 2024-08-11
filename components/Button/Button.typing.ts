@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 import { BrandColorKey } from '@core/theme/colors/typing';
 
-interface BaseButtonProps {
+export interface BaseButtonProps {
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
   size?: 'medium' | 'small';

@@ -38,7 +38,7 @@ const GlobalStyle = styled.style`
       }
     }) => contents.default};
     font-family:
-      MinSansNeoVF,
+      MinSansVF,
       -apple-system-,
       BlinkMacSystemFont,
       Helvetica Neue,
