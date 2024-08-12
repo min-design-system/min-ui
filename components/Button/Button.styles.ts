@@ -15,6 +15,7 @@ export const DefaultButton = styled.button<
 >`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   outline: 0;
   cursor: pointer;
   border: 1px solid transparent;

@@ -16,9 +16,9 @@ const light: Theme = {
       disabled: gray['400'],
       black: gray['900'],
       white: gray['0'],
-      whiteWeek: alpha.white600,
-      colorMint: mint['500'],
-      colorBlue: blue['500']
+      whiteWeak: alpha.white600,
+      mint: mint['500'],
+      blue: blue['500']
     },
     background: {
       default: gray['0'],
@@ -35,10 +35,10 @@ const light: Theme = {
       disabled: gray['200'],
       inverse: gray['900'],
       neutral: gray['500'],
-      colorMint: mint['500'],
-      colorMintWeak: mint['100'],
-      colorBlue: blue['500'],
-      colorBlueWeak: blue['100']
+      mint: mint['500'],
+      mintWeak: mint['100'],
+      blue: blue['500'],
+      blueWeak: blue['100']
     },
     border: {
       danger: red['500'],
