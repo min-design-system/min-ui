@@ -24,6 +24,28 @@ export const DefaultInputContainer = styled.div<
     }
   }) => surface.default};
 
+  ${({
+    theme: {
+      typography: { body }
+    },
+    size
+  }) => {
+    switch (size) {
+      case 'small':
+        return `
+              font-size: ${body.small.size};
+              font-weight: ${body.small.weight};
+              line-height: ${body.small.lineHeight.default};
+            `;
+      default:
+        return `
+              font-size: ${body.medium.size};
+              font-weight: ${body.medium.weight};
+              line-height: ${body.medium.lineHeight.default};
+            `;
+    }
+  }};
+
   ${({ size, compacted, rounded }) => {
     let horizontalPadding = 11;
     let verticalPadding = 11;
@@ -88,33 +110,11 @@ export const DefaultInputContainer = styled.div<
   }};
 `;
 
-export const DefaultInput = styled.input<{ inputSize: InputProps['size'] }>`
+export const DefaultInput = styled.input`
   flex-grow: 1;
   border: none;
   background-color: transparent;
   outline: 0;
-
-  ${({
-    theme: {
-      typography: { body }
-    },
-    inputSize
-  }) => {
-    switch (inputSize) {
-      case 'small':
-        return `
-              font-size: ${body.small.size};
-              font-weight: ${body.small.weight};
-              line-height: ${body.small.lineHeight.default};
-            `;
-      default:
-        return `
-              font-size: ${body.medium.size};
-              font-weight: ${body.medium.weight};
-              line-height: ${body.medium.lineHeight.default};
-            `;
-    }
-  }};
 
   &::placeholder {
     color: ${({

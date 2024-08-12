@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Button from './Button';
+import Icon from '../Icon';
 
 const meta = {
   title: 'Component/Button',
@@ -75,5 +76,31 @@ export const ToggleText: Story = {
     color: 'primary',
     selected: false,
     disabled: false
+  }
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: 'Button',
+    variant: 'default',
+    size: 'medium',
+    color: 'primary',
+    rounded: false,
+    compacted: false,
+    disabled: false,
+    prefixIcon: <Icon name="circle" />,
+    suffixIcon: <Icon name="circle" />
+  }
+};
+
+export const OnlyIcon: Story = {
+  args: {
+    variant: 'default',
+    size: 'medium',
+    color: 'primary',
+    rounded: false,
+    compacted: false,
+    disabled: false,
+    prefixIcon: <Icon name="circle" />
   }
 };

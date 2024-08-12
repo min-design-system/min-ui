@@ -50,7 +50,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       {prefixIcon}
       <DefaultInput
         ref={ref}
-        inputSize={size}
         onFocus={handleFocus}
         onBlur={handleBlur}
         disabled={disabled}

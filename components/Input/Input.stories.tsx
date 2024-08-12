@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Input from './Input';
+import Icon from '../Icon';
 
 const meta = {
   title: 'Component/Input',
@@ -31,5 +32,19 @@ export const Default: Story = {
     error: false,
     fullWidth: false,
     placeholder: '내용을 입력해 주세요.'
+  }
+};
+
+export const WithIcon: Story = {
+  args: {
+    size: 'medium',
+    rounded: false,
+    compacted: false,
+    disabled: false,
+    error: false,
+    fullWidth: false,
+    placeholder: '내용을 입력해 주세요.',
+    prefixIcon: <Icon name="circle" />,
+    suffixIcon: <Icon name="circle" />
   }
 };

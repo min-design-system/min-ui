@@ -36,41 +36,26 @@ export const DefaultButton = styled.button<
           background-color: ${surface.default};
           border-color: ${border.default};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'tertiary':
         return `
           background-color: ${surface.default};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'neutral':
         return `
           background-color: ${surface.strong};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'danger':
         return `
           background-color: ${surface.danger};
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `;
       default:
         return `
           background-color: ${surface.primary};
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `;
     }
   }};
@@ -172,41 +157,26 @@ export const CTAButton = styled.button<
           background-color: ${surface.default};
           border-color: ${border.default};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'tertiary':
         return `
           background-color: ${surface.default};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'neutral':
         return `
           background-color: ${surface.strong};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'danger':
         return `
           background-color: ${surface.danger};
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `;
       default:
         return `
           background-color: ${surface.primary};
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `;
     }
   }};
@@ -267,34 +237,22 @@ export const ToggleButton = styled.button<
           ? `
           background-color: ${surface.danger};
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `
           : `
           background-color: ${surface.default};
           border-color: ${border.danger};
           color: ${contents.danger};
-          & > svg {
-            color: ${contents.danger};
-          }
         `;
       default:
         return selected
           ? `
           background-color: ${surface.primary};
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `
           : `
           background-color: ${surface.default};
           border-color: ${border.default};
           color: ${contents.default};
-          & > svg {
-            color: ${contents.white};
-          }
         `;
     }
   }};
@@ -387,37 +345,22 @@ export const TextButton = styled.button<TextButtonProps>`
       case 'secondary':
         return `
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `;
       case 'tertiary':
         return `
           color: ${contents.neutral};
-          & > svg {
-            color: ${contents.neutral};
-          }
         `;
       case 'danger':
         return `
           color: ${contents.danger};
-          & > svg {
-            color: ${contents.danger};
-          }
         `;
       case 'white':
         return `
           color: ${contents.white};
-          & > svg {
-            color: ${contents.white};
-          }
         `;
       default:
         return `
           color: ${surface.primary};
-          & > svg {
-            color: ${surface.primary};
-          }
         `;
     }
   }};
@@ -482,15 +425,9 @@ export const ToggleTextButton = styled.button<ToggleTextButtonProps>`
     selected
       ? `
           color: ${surface.primary};
-          & > svg {
-            color: ${surface.primary};
-          }
         `
       : `
           color: ${contents.default};
-          & > svg {
-            color: ${contents.default};
-          }
         `};
 
   ${({
