@@ -37,6 +37,15 @@ const GlobalStyle = styled.style`
         semanticColor: { contents }
       }
     }) => contents.default};
+    ${({
+      theme: {
+        typography: { body }
+      }
+    }) => `
+        font-size: ${body.medium.size};
+        font-weight: ${body.medium.weight};
+        line-height: ${body.medium.lineHeight.default};
+    `};
     font-family:
       MinSansNeoVF,
       -apple-system-,
