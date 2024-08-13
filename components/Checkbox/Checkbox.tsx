@@ -23,7 +23,11 @@ const Checkbox = forwardRef<HTMLDivElement, CheckboxProps>(function Checkbox(
 
   return (
     <CheckboxContainer ref={ref} size={size} disabled={disabled}>
-      <CheckboxInputContainer checked={localChecked} disabled={disabled}>
+      <CheckboxInputContainer
+        checked={localChecked}
+        disabled={disabled}
+        indeterminate={indeterminate}
+      >
         <CheckboxInput
           type="checkbox"
           onChange={handleChange}
@@ -31,9 +35,8 @@ const Checkbox = forwardRef<HTMLDivElement, CheckboxProps>(function Checkbox(
           disabled={disabled}
           {...props}
         />
-        {indeterminate && <Icon name="remove-square-fill" />}
-        {!localChecked && !indeterminate && <Icon name="square" />}
-        {localChecked && <Icon name="check-square-fill" />}
+        {!localChecked && <Icon name="square" />}
+        {localChecked && <Icon name={indeterminate ? 'remove-square-fill' : 'check-square-fill'} />}
       </CheckboxInputContainer>
       {label}
     </CheckboxContainer>

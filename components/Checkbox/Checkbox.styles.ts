@@ -39,16 +39,17 @@ export const CheckboxContainer = styled.div<Pick<CheckboxProps, 'size' | 'disabl
 `;
 
 export const CheckboxInputContainer = styled.div<
-  Pick<CheckboxProps, 'size' | 'checked' | 'disabled'>
+  Pick<CheckboxProps, 'size' | 'checked' | 'disabled' | 'indeterminate'>
 >`
   ${({
     theme: {
       semanticColor: { contents }
     },
     checked,
-    disabled
+    disabled,
+    indeterminate
   }) => {
-    if (!disabled && checked) {
+    if (!disabled && !indeterminate && checked) {
       return `
         color: ${contents.primary};
       `;
