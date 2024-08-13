@@ -12,6 +12,6 @@ export interface TagProps extends HTMLAttributes<HTMLDivElement> {
     | `${Extract<SecondaryColorKey, 'blue' | 'mint'>}-light`
     | 'light';
   prefixIcon?: ReactNode;
-  suffixIcon?: ReactNode;
+  deleteIcon?: ReactNode;
   disabled?: boolean;
 }

@@ -1,9 +1,8 @@
 import { ChangeEvent, forwardRef, useEffect, useState } from 'react';
 
-import Icon from '@components/Icon';
-
 import { CheckboxContainer, CheckboxInputContainer, CheckboxInput } from './Checkbox.styles';
 import { CheckboxProps } from './Checkbox.typing';
+import Icon from '../Icon';
 
 const Checkbox = forwardRef<HTMLDivElement, CheckboxProps>(function Checkbox(
   { label, size, checked, disabled, indeterminate, onChange, ...props },

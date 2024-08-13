@@ -13,7 +13,7 @@ const meta = {
     prefixIcon: {
       control: false
     },
-    suffixIcon: {
+    deleteIcon: {
       control: false
     }
   },
@@ -38,7 +38,17 @@ export const WithIcon: Story = {
     size: 'medium',
     color: 'default',
     disabled: false,
+    prefixIcon: <Icon name="circle" />
+  }
+};
+
+export const WithDeleteIcon: Story = {
+  args: {
+    children: 'Tag',
+    size: 'medium',
+    color: 'default',
+    disabled: false,
     prefixIcon: <Icon name="circle" />,
-    suffixIcon: <Icon name="close" />
+    deleteIcon: <Icon name="close" />
   }
 };

@@ -2,13 +2,17 @@ import styled from '@core/styled';
 
 import { TagProps } from './Tag.typing';
 
-export const StyledTag = styled.div<Pick<TagProps, 'color' | 'size' | 'disabled'>>`
+export const StyledTag = styled.div<
+  Pick<TagProps, 'color' | 'size' | 'disabled'> & {
+    hasDeleteIcon: boolean;
+  }
+>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 2px;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: ${({ hasDeleteIcon }) => (hasDeleteIcon ? 'pointer' : 'default')};
 
   ${({
     theme: {
@@ -141,7 +145,7 @@ export const PrefixIcon = styled.div<Pick<TagProps, 'size'>>`
   }};
 `;
 
-export const SuffixIcon = styled.div<Pick<TagProps, 'size'>>`
+export const DeleteIcon = styled.div<Pick<TagProps, 'size'>>`
   padding-right: 2px;
   ${({
     theme: {
