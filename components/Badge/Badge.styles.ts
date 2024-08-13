@@ -57,3 +57,7 @@ export const StyledBadge = styled.span<Pick<BadgeProps, 'color' | 'size'>>`
     `;
   }};
 `;
+
+export const Children = styled.span`
+  padding: 0 2px;
+`;

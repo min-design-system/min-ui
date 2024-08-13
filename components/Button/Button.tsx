@@ -5,7 +5,8 @@ import {
   CTAButton,
   ToggleButton,
   TextButton,
-  ToggleTextButton
+  ToggleTextButton,
+  Children
 } from './Button.styles';
 import { ButtonProps, DefaultButtonProps } from './Button.typing';
 
@@ -39,7 +40,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
     return (
       <ToggleButton ref={ref} variant={variant} color={color} onlyIcon={isOnlyIcon} {...props}>
         {prefixIcon}
-        {children}
+        <Children>{children}</Children>
         {suffixIcon}
       </ToggleButton>
     );
@@ -49,7 +50,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
     return (
       <CTAButton ref={ref} variant={variant} color={color} onlyIcon={isOnlyIcon} {...props}>
         {prefixIcon}
-        {children}
+        <Children>{children}</Children>
         {suffixIcon}
       </CTAButton>
     );
@@ -64,7 +65,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
       {...props}
     >
       {prefixIcon}
-      {children}
+      <Children>{children}</Children>
       {suffixIcon}
     </DefaultButton>
   );

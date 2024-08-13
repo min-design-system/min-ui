@@ -472,3 +472,7 @@ export const ToggleTextButton = styled.button<ToggleTextButtonProps>`
     }) => contents.disabled};
   }
 `;
+
+export const Children = styled.div`
+  padding: 0 2px;
+`;

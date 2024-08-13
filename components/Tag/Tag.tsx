@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { StyledTag, PrefixIcon, DeleteIcon } from './Tag.styles';
+import { StyledTag, Children, PrefixIcon, DeleteIcon } from './Tag.styles';
 import { TagProps } from './Tag.typing';
 
 const Tag = forwardRef<HTMLDivElement, TagProps>(function Tag(
@@ -10,7 +10,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(function Tag(
   return (
     <StyledTag ref={ref} size={size} hasDeleteIcon={!!deleteIcon} {...props}>
       {prefixIcon && <PrefixIcon size={size}>{prefixIcon}</PrefixIcon>}
-      {children}
+      <Children>{children}</Children>
       {deleteIcon && <DeleteIcon size={size}>{deleteIcon}</DeleteIcon>}
     </StyledTag>
   );

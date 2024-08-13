@@ -49,33 +49,33 @@ export const DefaultInputContainer = styled.div<
   ${({ size, compacted, rounded }) => {
     let horizontalPadding = 11;
     let verticalPadding = 11;
-    let gap = 12;
+    let gap = 10;
 
     switch (size) {
       case 'small':
         horizontalPadding = 8;
         verticalPadding = 8;
-        gap = 9;
+        gap = 7;
 
         if (compacted && !rounded) {
           horizontalPadding = 4;
           verticalPadding = 4;
-          gap = 5;
+          gap = 3;
         } else if (compacted && rounded) {
           horizontalPadding = 6;
           verticalPadding = 4;
-          gap = 5;
+          gap = 3;
         }
         break;
       default:
         if (compacted && !rounded) {
           horizontalPadding = 7;
           verticalPadding = 7;
-          gap = 8;
+          gap = 6;
         } else if (compacted && rounded) {
           horizontalPadding = 9;
           verticalPadding = 7;
-          gap = 8;
+          gap = 6;
         }
         break;
     }
@@ -112,6 +112,7 @@ export const DefaultInputContainer = styled.div<
 
 export const DefaultInput = styled.input`
   flex-grow: 1;
+  padding: 0 2px;
   border: none;
   background-color: transparent;
   outline: 0;

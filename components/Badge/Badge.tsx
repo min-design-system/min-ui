@@ -1,12 +1,12 @@
 import { forwardRef } from 'react';
 
-import { StyledBadge } from './Badge.styles';
+import { StyledBadge, Children } from './Badge.styles';
 import { BadgeProps } from './Badge.typing';
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge({ children, ...props }, ref) {
   return (
     <StyledBadge ref={ref} {...props}>
-      {children}
+      <Children>{children}</Children>
     </StyledBadge>
   );
 });

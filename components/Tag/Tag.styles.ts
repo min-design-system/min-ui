@@ -92,7 +92,7 @@ export const StyledTag = styled.div<
   }) => {
     if (size === 'small') {
       return `
-        gap: 3px;
+        gap: 1px;
         font-size: ${caption.small.size};
         font-weight: ${caption.small.weight};
         line-height: ${caption.small.lineHeight.default};        
@@ -100,7 +100,7 @@ export const StyledTag = styled.div<
     }
 
     return `
-      gap: 4px;
+      gap: 2px;
       font-size: ${caption.medium.size};
       font-weight: ${caption.medium.weight};
       line-height: ${caption.medium.lineHeight.default};        
@@ -120,6 +120,10 @@ export const StyledTag = styled.div<
     cursor: not-allowed;
   `
       : ''};
+`;
+
+export const Children = styled.div`
+  padding: 0 2px;
 `;
 
 export const PrefixIcon = styled.div<Pick<TagProps, 'size'>>`
