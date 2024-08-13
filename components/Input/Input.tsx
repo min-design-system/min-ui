@@ -3,7 +3,7 @@ import { FocusEvent, forwardRef, useState } from 'react';
 import { DefaultInput, DefaultInputContainer } from './Input.styles';
 import { InputProps } from './Input.typing';
 
-const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+const Input = forwardRef<HTMLDivElement, InputProps>(function Input(
   {
     fullWidth,
     size,
@@ -39,6 +39,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   return (
     <DefaultInputContainer
+      ref={ref}
       size={size}
       rounded={rounded}
       compacted={compacted}
@@ -48,13 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       disabled={disabled}
     >
       {prefixIcon}
-      <DefaultInput
-        ref={ref}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        disabled={disabled}
-        {...props}
-      />
+      <DefaultInput onFocus={handleFocus} onBlur={handleBlur} disabled={disabled} {...props} />
       {suffixIcon}
     </DefaultInputContainer>
   );

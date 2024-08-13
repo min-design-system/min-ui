@@ -33,16 +33,16 @@ export const DefaultInputContainer = styled.div<
     switch (size) {
       case 'small':
         return `
-              font-size: ${body.small.size};
-              font-weight: ${body.small.weight};
-              line-height: ${body.small.lineHeight.default};
-            `;
+          font-size: ${body.small.size};
+          font-weight: ${body.small.weight};
+          line-height: ${body.small.lineHeight.default};
+        `;
       default:
         return `
-              font-size: ${body.medium.size};
-              font-weight: ${body.medium.weight};
-              line-height: ${body.medium.lineHeight.default};
-            `;
+          font-size: ${body.medium.size};
+          font-weight: ${body.medium.weight};
+          line-height: ${body.medium.lineHeight.default};
+        `;
     }
   }};
 
@@ -83,7 +83,7 @@ export const DefaultInputContainer = styled.div<
     return `
         padding: ${verticalPadding}px ${horizontalPadding}px;
         gap: ${gap}px;
-      `;
+    `;
   }};
 
   ${({
