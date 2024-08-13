@@ -816,6 +816,6 @@ export type IconName =
   | 'badge-sparkle'
   | 'badge-warning';
 
-export interface IconProps extends HTMLAttributes<HTMLElement> {
+export interface IconProps extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
   name: IconName;
 }

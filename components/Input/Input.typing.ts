@@ -1,6 +1,7 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'size'> {
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
   size?: 'medium' | 'small';
