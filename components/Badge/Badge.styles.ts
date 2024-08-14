@@ -14,25 +14,25 @@ export const StyledBadge = styled.span<Pick<BadgeProps, 'color' | 'size'>>`
   }) => {
     switch (color) {
       case 'inverse':
-        return `
-          background-color: ${surface.default};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.default,
+          color: contents.default
+        };
       case 'primary':
-        return `
-          background-color: ${surface.primary};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.primary,
+          color: contents.white
+        };
       case 'danger':
-        return `
-          background-color: ${surface.danger};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.danger,
+          color: contents.white
+        };
       default:
-        return `
-          background-color: ${surface.inverse};
-          color: ${contents.inverse};
-        `;
+        return {
+          backgroundColor: surface.inverse,
+          color: contents.inverse
+        };
     }
   }};
 
@@ -43,18 +43,18 @@ export const StyledBadge = styled.span<Pick<BadgeProps, 'color' | 'size'>>`
     size
   }) => {
     if (size === 'small') {
-      return `
-        font-size: ${caption.small.size};
-        font-weight: ${caption.small.weight};
-        line-height: ${caption.small.lineHeight.default};        
-      `;
+      return {
+        fontSize: caption.small.size,
+        fontWeight: caption.small.weight,
+        lineHeight: caption.small.lineHeight.default
+      };
     }
 
-    return `
-      font-size: ${caption.medium.size};
-      font-weight: ${caption.medium.weight};
-      line-height: ${caption.medium.lineHeight.default};        
-    `;
+    return {
+      fontSize: caption.medium.size,
+      fontWeight: caption.medium.weight,
+      lineHeight: caption.medium.lineHeight.default
+    };
   }};
 `;
 

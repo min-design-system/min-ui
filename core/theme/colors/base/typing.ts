@@ -12,12 +12,7 @@ export type ColorValue =
 
 export type AbsoluteUnit = 'cm' | 'mm' | 'in' | 'px' | 'pt' | 'pc';
 export type RelativeUnit = 'em' | 'ex' | 'ch' | 'rem' | 'vw' | 'vh' | 'vmin' | 'vmax' | '%';
-export type CSSValue =
-  | number
-  | string
-  | `${number}${AbsoluteUnit | RelativeUnit}`
-  | 'auto'
-  | 'inherit';
+export type CSSValue = ColorValue | `${number}${AbsoluteUnit | RelativeUnit}` | string;
 
 export type ColorScaleKey =
   | 'gray'

@@ -13,5 +13,12 @@ export const TabContainer = styled.div<Pick<TabProps, 'enableWide'>>`
       }
     }) => border.default};
 
-  ${({ enableWide }) => (!enableWide ? 'gap: 12px;' : '& > div { flex-grow: 1 };')};
+  ${({ enableWide }) =>
+    !enableWide
+      ? { gap: '12px' }
+      : {
+          '& > div': {
+            flexGrow: 1
+          }
+        }};
 `;

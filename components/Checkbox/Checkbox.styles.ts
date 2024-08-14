@@ -16,17 +16,17 @@ export const CheckboxContainer = styled.div<Pick<CheckboxProps, 'size' | 'disabl
   }) => {
     switch (size) {
       case 'small':
-        return `
-          font-size: ${body.small.size};
-          font-weight: ${body.small.weight};
-          line-height: ${body.small.lineHeight.default};
-        `;
+        return {
+          fontSize: body.small.size,
+          fontWeight: body.small.weight,
+          lineHeight: body.small.lineHeight.default
+        };
       default:
-        return `
-          font-size: ${body.medium.size};
-          font-weight: ${body.medium.weight};
-          line-height: ${body.medium.lineHeight.default};
-        `;
+        return {
+          fontSize: body.medium.size,
+          fontWeight: body.medium.weight,
+          lineHeight: body.medium.lineHeight.default
+        };
     }
   }};
 
@@ -35,7 +35,7 @@ export const CheckboxContainer = styled.div<Pick<CheckboxProps, 'size' | 'disabl
       semanticColor: { contents }
     },
     disabled
-  }) => (disabled ? `color: ${contents.disabled}` : '')};
+  }) => (disabled ? { color: contents.disabled } : null)};
 `;
 
 export const CheckboxInputContainer = styled.div<
@@ -50,14 +50,14 @@ export const CheckboxInputContainer = styled.div<
     indeterminate
   }) => {
     if (!disabled && !indeterminate && checked) {
-      return `
-        color: ${contents.primary};
-      `;
+      return {
+        color: contents.primary
+      };
     }
 
-    return `
-      color: ${contents.disabled}
-    `;
+    return {
+      color: contents.disabled
+    };
   }}
 `;
 

@@ -28,14 +28,14 @@ export const Circle = styled.div<Pick<SwitchProps, 'size' | 'checked'>>`
 
   ${({ size }) =>
     size === 'small'
-      ? `
-        width: 16px;
-        height: 16px;
-    `
-      : `
-      width: 20px;
-      height: 20px;
-    `};
+      ? {
+          width: '16px',
+          height: '16px'
+        }
+      : {
+          width: '20px',
+          height: '20px'
+        }};
 `;
 
 export const SwitchInput = styled.input`

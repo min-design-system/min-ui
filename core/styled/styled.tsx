@@ -2,6 +2,7 @@ import { ElementType } from 'react';
 
 import InserterGuard from '@core/styled/serialize/InserterGuard';
 import light from '@core/theme/light';
+import camelToKebab from '@utils/camelToKebab';
 import convertHash from '@utils/convertHash';
 
 import attributes from './attributes';
@@ -37,6 +38,10 @@ const styled: CreateStyledFunction = (Tag) => {
         if (styledArrayFunction) {
           const styledValue = styledArrayFunction(newProps);
 
+          if (!styledValue) {
+            return acc + curr;
+          }
+
           if (Promise.resolve(styledValue) === styledValue) {
             asyncStyledValueSerialize[index] = styledValue as Promise<StyledValue>;
 
@@ -53,7 +58,7 @@ const styled: CreateStyledFunction = (Tag) => {
             return `${acc}${
               currentStyledValue
                 ? Object.entries(currentStyledValue)
-                    .map(([k, v]) => `${k}:${v}`)
+                    .map(([k, v]) => `${camelToKebab(k)}:${v}`)
                     .join(';')
                 : `[pending:${index}]`
             }${curr}`;
@@ -63,12 +68,8 @@ const styled: CreateStyledFunction = (Tag) => {
             return `${acc}${styledValue}${curr}`;
           }
 
-          if (!styledValue) {
-            return '';
-          }
-
           return `${acc}${Object.entries(styledValue)
-            .map(([k, v]) => `${k}:${v}`)
+            .map(([k, v]) => `${camelToKebab(k)}:${v}`)
             .join(';')}${curr}`;
         }
 
@@ -126,9 +127,7 @@ const styled: CreateStyledFunction = (Tag) => {
             </InserterGuard>
             <FinalTag
               {...filteredProps}
-              className={[className, filteredProps?.className]
-                .filter((newClassName) => newClassName)
-                .join(' ')}
+              className={[className, filteredProps?.className].filter(Boolean).join(' ')}
             >
               {newProps?.children}
             </FinalTag>

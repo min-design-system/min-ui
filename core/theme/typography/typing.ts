@@ -9,7 +9,7 @@ export type TypographySize =
   | `large${'Strong' | 'Stronger'}`;
 export type TypographyWeight = 400 | 500 | 600 | 700 | 800;
 export type TypographyLineHeight = {
-  default: CSSValue;
+  default: number;
 };
 
 export type TypographyContent = {

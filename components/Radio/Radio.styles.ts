@@ -16,17 +16,17 @@ export const RadioContainer = styled.div<Pick<RadioProps, 'size' | 'disabled'>>`
   }) => {
     switch (size) {
       case 'small':
-        return `
-          font-size: ${body.small.size};
-          font-weight: ${body.small.weight};
-          line-height: ${body.small.lineHeight.default};
-        `;
+        return {
+          fontSize: body.small.size,
+          fontWeight: body.small.weight,
+          lineHeight: body.small.lineHeight.default
+        };
       default:
-        return `
-          font-size: ${body.medium.size};
-          font-weight: ${body.medium.weight};
-          line-height: ${body.medium.lineHeight.default};
-        `;
+        return {
+          fontSize: body.medium.size,
+          fontWeight: body.medium.weight,
+          lineHeight: body.medium.lineHeight.default
+        };
     }
   }};
 
@@ -35,7 +35,7 @@ export const RadioContainer = styled.div<Pick<RadioProps, 'size' | 'disabled'>>`
       semanticColor: { contents }
     },
     disabled
-  }) => (disabled ? `color: ${contents.disabled}` : '')};
+  }) => (disabled ? { color: contents.disabled } : null)};
 `;
 
 export const RadioInputContainer = styled.div<Pick<RadioProps, 'size' | 'checked' | 'disabled'>>`
@@ -47,14 +47,14 @@ export const RadioInputContainer = styled.div<Pick<RadioProps, 'size' | 'checked
     disabled
   }) => {
     if (!disabled && checked) {
-      return `
-        color: ${contents.primary};
-      `;
+      return {
+        color: contents.primary
+      };
     }
 
-    return `
-      color: ${contents.disabled}
-    `;
+    return {
+      color: contents.disabled
+    };
   }}
 `;
 

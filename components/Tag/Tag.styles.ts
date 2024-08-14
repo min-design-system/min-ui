@@ -22,65 +22,65 @@ export const StyledTag = styled.div<
   }) => {
     switch (color) {
       case 'light':
-        return `
-          background-color: ${surface.default};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.default,
+          color: contents.default
+        };
       case 'neutral':
-        return `
-          background-color: ${surface.neutral};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.neutral,
+          color: contents.white
+        };
       case 'neutral-light':
-        return `
-          background-color: ${surface.strong};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.strong,
+          color: contents.default
+        };
       case 'primary':
-        return `
-          background-color: ${surface.primary};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.primary,
+          color: contents.white
+        };
       case 'primary-light':
-        return `
-          background-color: ${surface.primaryWeak};
-          color: ${contents.primary};
-        `;
+        return {
+          backgroundColor: surface.primaryWeak,
+          color: contents.primary
+        };
       case 'danger':
-        return `
-          background-color: ${surface.danger};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.danger,
+          color: contents.white
+        };
       case 'danger-light':
-        return `
-          background-color: ${surface.dangerWeak};
-          color: ${contents.danger};
-        `;
+        return {
+          backgroundColor: surface.dangerWeak,
+          color: contents.danger
+        };
       case 'blue':
-        return `
-          background-color: ${surface.blue};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.blue,
+          color: contents.white
+        };
       case 'blue-light':
-        return `
-          background-color: ${surface.blueWeak};
-          color: ${contents.blue};
-        `;
+        return {
+          backgroundColor: surface.blueWeak,
+          color: contents.blue
+        };
       case 'mint':
-        return `
-            background-color: ${surface.mint};
-            color: ${contents.white};
-          `;
+        return {
+          backgroundColor: surface.mint,
+          color: contents.white
+        };
       case 'mint-light':
-        return `
-          background-color: ${surface.mintWeak};
-          color: ${contents.mint};
-        `;
+        return {
+          backgroundColor: surface.mintWeak,
+          color: contents.mint
+        };
       default:
-        return `
-          background-color: ${surface.inverse};
-          color: ${contents.inverse};
-        `;
+        return {
+          backgroundColor: surface.inverse,
+          color: contents.inverse
+        };
     }
   }};
 
@@ -91,20 +91,20 @@ export const StyledTag = styled.div<
     size
   }) => {
     if (size === 'small') {
-      return `
-        gap: 1px;
-        font-size: ${caption.small.size};
-        font-weight: ${caption.small.weight};
-        line-height: ${caption.small.lineHeight.default};        
-      `;
+      return {
+        gap: '1px',
+        fontSize: caption.small.size,
+        fontWeight: caption.small.weight,
+        lineHeight: caption.small.lineHeight.default
+      };
     }
 
-    return `
-      gap: 2px;
-      font-size: ${caption.medium.size};
-      font-weight: ${caption.medium.weight};
-      line-height: ${caption.medium.lineHeight.default};        
-    `;
+    return {
+      gap: '2px',
+      fontSize: caption.medium.size,
+      fontWeight: caption.medium.weight,
+      lineHeight: caption.medium.lineHeight.default
+    };
   }};
 
   ${({
@@ -114,12 +114,12 @@ export const StyledTag = styled.div<
     disabled
   }) =>
     disabled
-      ? `
-    background-color: ${surface.disabled};
-    color: ${contents.disabled};
-    cursor: not-allowed;
-  `
-      : ''};
+      ? {
+          backgroundColor: surface.disabled,
+          color: contents.disabled,
+          cursor: 'not-allowed'
+        }
+      : null};
 `;
 
 export const Children = styled.div`
@@ -134,18 +134,18 @@ export const PrefixIcon = styled.div<Pick<TagProps, 'size'>>`
     size
   }) => {
     if (size === 'small') {
-      return `
-        font-size: ${caption.smallStrong.size};
-        font-weight: ${caption.smallStrong.weight};
-        line-height: ${caption.smallStrong.lineHeight.default};        
-      `;
+      return {
+        fontSize: caption.smallStrong.size,
+        fontWeight: caption.smallStrong.weight,
+        lineHeight: caption.smallStrong.lineHeight.default
+      };
     }
 
-    return `
-      font-size: ${caption.mediumStrong.size};
-      font-weight: ${caption.mediumStrong.weight};
-      line-height: ${caption.mediumStrong.lineHeight.default};        
-    `;
+    return {
+      fontSize: caption.mediumStrong.size,
+      fontWeight: caption.mediumStrong.weight,
+      lineHeight: caption.mediumStrong.lineHeight.default
+    };
   }};
 `;
 
@@ -158,17 +158,17 @@ export const DeleteIcon = styled.div<Pick<TagProps, 'size'>>`
     size
   }) => {
     if (size === 'small') {
-      return `
-        font-size: ${caption.small.size};
-        font-weight: ${caption.small.weight};
-        line-height: ${caption.small.lineHeight.default};        
-      `;
+      return {
+        fontSize: caption.small.size,
+        fontWeight: caption.small.weight,
+        lineHeight: caption.small.lineHeight.default
+      };
     }
 
-    return `
-      font-size: ${caption.medium.size};
-      font-weight: ${caption.medium.weight};
-      line-height: ${caption.medium.lineHeight.default};        
-    `;
+    return {
+      fontSize: caption.medium.size,
+      fontWeight: caption.medium.weight,
+      lineHeight: caption.medium.lineHeight.default
+    };
   }};
 `;

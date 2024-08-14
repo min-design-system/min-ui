@@ -32,17 +32,17 @@ export const DefaultInputContainer = styled.div<
   }) => {
     switch (size) {
       case 'small':
-        return `
-          font-size: ${body.small.size};
-          font-weight: ${body.small.weight};
-          line-height: ${body.small.lineHeight.default};
-        `;
+        return {
+          fontSize: body.small.size,
+          fontWeight: body.small.weight,
+          lineHeight: body.small.lineHeight.default
+        };
       default:
-        return `
-          font-size: ${body.medium.size};
-          font-weight: ${body.medium.weight};
-          line-height: ${body.medium.lineHeight.default};
-        `;
+        return {
+          fontSize: body.medium.size,
+          fontWeight: body.medium.weight,
+          lineHeight: body.medium.lineHeight.default
+        };
     }
   }};
 
@@ -80,10 +80,10 @@ export const DefaultInputContainer = styled.div<
         break;
     }
 
-    return `
-        padding: ${verticalPadding}px ${horizontalPadding}px;
-        gap: ${gap}px;
-    `;
+    return {
+      padding: `${verticalPadding}px ${horizontalPadding}px`,
+      gap: `${gap}px`
+    };
   }};
 
   ${({
@@ -94,18 +94,18 @@ export const DefaultInputContainer = styled.div<
     disabled
   }) => {
     if (disabled) {
-      return `
-        background-color: ${surface.disabled};
-        border-color: ${border.default};
-      `;
+      return {
+        backgroundColor: surface.disabled,
+        borderColor: border.default
+      };
     }
     if (error) {
-      return `
-        background-color: ${surface.dangerWeak};
-        border-color: ${border.danger};
-      `;
+      return {
+        backgroundColor: surface.dangerWeak,
+        borderColor: border.danger
+      };
     }
-    return '';
+    return null;
   }};
 `;
 

@@ -18,23 +18,23 @@ export const TabItemContainer = styled.div<Pick<TabItemProps, 'selected'>>`
     selected
   }) =>
     selected
-      ? `
-        font-size: ${body.mediumStrong.size};
-        font-weight: ${body.mediumStrong.weight};
-        line-height: ${body.mediumStrong.lineHeight.default};
-      `
-      : `
-        font-size: ${body.medium.size};
-        font-weight: ${body.medium.weight};
-        line-height: ${body.medium.lineHeight.default};
-      `};
+      ? {
+          fontSize: body.mediumStrong.size,
+          fontWeight: body.mediumStrong.weight,
+          lineHeight: body.mediumStrong.lineHeight.default
+        }
+      : {
+          fontSize: body.medium.size,
+          fontWeight: body.medium.weight,
+          lineHeight: body.medium.lineHeight.default
+        }};
 
   ${({
     theme: {
       semanticColor: { contents, border }
     },
     selected
-  }) => (selected ? `border-bottom-color: ${border.stronger}` : `color: ${contents.disabled}`)};
+  }) => (selected ? { borderBottomColor: border.stronger } : { color: contents.disabled })};
 `;
 
 export const DotContainer = styled.div`

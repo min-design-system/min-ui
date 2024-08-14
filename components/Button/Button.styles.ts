@@ -20,8 +20,6 @@ export const DefaultButton = styled.button<
   cursor: pointer;
   border: 1px solid transparent;
   background-color: transparent;
-  // TODO number 가 정상 변환되지 않는 문제 수정
-  // border-radius: ${({ rounded }) => (rounded ? 999 : 8)}px;
   border-radius: ${({ rounded }) => (rounded ? '999px' : '8px')};
 
   ${({
@@ -32,31 +30,31 @@ export const DefaultButton = styled.button<
   }) => {
     switch (color) {
       case 'secondary':
-        return `
-          background-color: ${surface.default};
-          border-color: ${border.default};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.default,
+          borderColor: border.default,
+          color: contents.default
+        };
       case 'tertiary':
-        return `
-          background-color: ${surface.default};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.default,
+          color: contents.default
+        };
       case 'neutral':
-        return `
-          background-color: ${surface.strong};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.strong,
+          color: contents.default
+        };
       case 'danger':
-        return `
-          background-color: ${surface.danger};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.danger,
+          color: contents.white
+        };
       default:
-        return `
-          background-color: ${surface.primary};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.primary,
+          color: contents.white
+        };
     }
   }};
 
@@ -104,13 +102,13 @@ export const DefaultButton = styled.button<
       horizontalPadding += 2;
     }
 
-    return `
-      gap: ${gap}px;
-      padding: ${verticalPadding}px ${horizontalPadding}px;
-      font-size: ${fontSize};
-      font-weight: ${fontWeight};
-      line-height: ${lineHeight};
-    `;
+    return {
+      gap: `${gap}px`,
+      padding: `${verticalPadding}px ${horizontalPadding}px`,
+      fontSize: `${fontSize}px`,
+      fontWeight,
+      lineHeight
+    };
   }};
 
   &:disabled {
@@ -152,31 +150,31 @@ export const CTAButton = styled.button<
   }) => {
     switch (color) {
       case 'secondary':
-        return `
-          background-color: ${surface.default};
-          border-color: ${border.default};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.default,
+          borderColor: border.default,
+          color: contents.default
+        };
       case 'tertiary':
-        return `
-          background-color: ${surface.default};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.default,
+          color: contents.default
+        };
       case 'neutral':
-        return `
-          background-color: ${surface.strong};
-          color: ${contents.default};
-        `;
+        return {
+          backgroundColor: surface.strong,
+          color: contents.default
+        };
       case 'danger':
-        return `
-          background-color: ${surface.danger};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.danger,
+          color: contents.white
+        };
       default:
-        return `
-          background-color: ${surface.primary};
-          color: ${contents.white};
-        `;
+        return {
+          backgroundColor: surface.primary,
+          color: contents.white
+        };
     }
   }};
 
@@ -188,11 +186,11 @@ export const CTAButton = styled.button<
         }
       }
     }
-  }) => `
-      font-size: ${size};
-      font-weight: ${weight};
-      line-height: ${lineHeight.default};
-    `};
+  }) => ({
+    fontSize: size,
+    fontWeight: weight,
+    lineHeight: lineHeight.default
+  })};
 
   &:disabled {
     cursor: not-allowed;
@@ -233,26 +231,26 @@ export const ToggleButton = styled.button<
     switch (color) {
       case 'danger':
         return selected
-          ? `
-          background-color: ${surface.danger};
-          color: ${contents.white};
-        `
-          : `
-          background-color: ${surface.default};
-          border-color: ${border.danger};
-          color: ${contents.danger};
-        `;
+          ? {
+              backgroundColor: surface.danger,
+              color: contents.white
+            }
+          : {
+              backgroundColor: surface.default,
+              borderColor: border.danger,
+              color: contents.danger
+            };
       default:
         return selected
-          ? `
-          background-color: ${surface.primary};
-          color: ${contents.white};
-        `
-          : `
-          background-color: ${surface.default};
-          border-color: ${border.default};
-          color: ${contents.default};
-        `;
+          ? {
+              backgroundColor: surface.primary,
+              color: contents.white
+            }
+          : {
+              backgroundColor: surface.default,
+              borderColor: border.default,
+              color: contents.default
+            };
     }
   }};
 
@@ -300,13 +298,13 @@ export const ToggleButton = styled.button<
       horizontalPadding += 2;
     }
 
-    return `
-      gap: ${gap}px;
-      padding: ${verticalPadding}px ${horizontalPadding}px;
-      font-size: ${fontSize};
-      font-weight: ${fontWeight};
-      line-height: ${lineHeight};
-    `;
+    return {
+      gap: `${gap}px`,
+      padding: `${verticalPadding}px ${horizontalPadding}px`,
+      fontSize: `${fontSize}px`,
+      fontWeight,
+      lineHeight
+    };
   }};
 
   &:disabled {
@@ -342,25 +340,25 @@ export const TextButton = styled.button<TextButtonProps>`
   }) => {
     switch (color) {
       case 'secondary':
-        return `
-          color: ${contents.default};
-        `;
+        return {
+          color: contents.default
+        };
       case 'tertiary':
-        return `
-          color: ${contents.neutral};
-        `;
+        return {
+          color: contents.neutral
+        };
       case 'danger':
-        return `
-          color: ${contents.danger};
-        `;
+        return {
+          color: contents.danger
+        };
       case 'white':
-        return `
-          color: ${contents.white};
-        `;
+        return {
+          color: contents.white
+        };
       default:
-        return `
-          color: ${surface.primary};
-        `;
+        return {
+          color: surface.primary
+        };
     }
   }};
 
@@ -388,12 +386,12 @@ export const TextButton = styled.button<TextButtonProps>`
         break;
     }
 
-    return `
-      gap: ${gap}px;
-      font-size: ${fontSize};
-      font-weight: ${fontWeight};
-      line-height: ${lineHeight};
-    `;
+    return {
+      gap: `${gap}px`,
+      fontSize: `${fontSize}px`,
+      fontWeight,
+      lineHeight
+    };
   }};
 
   &:disabled {
@@ -422,12 +420,12 @@ export const ToggleTextButton = styled.button<ToggleTextButtonProps>`
     }
   }) =>
     selected
-      ? `
-          color: ${surface.primary};
-        `
-      : `
-          color: ${contents.default};
-        `};
+      ? {
+          color: surface.primary
+        }
+      : {
+          color: contents.default
+        }};
 
   ${({
     theme: {
@@ -453,12 +451,12 @@ export const ToggleTextButton = styled.button<ToggleTextButtonProps>`
         break;
     }
 
-    return `
-      gap: ${gap}px;
-      font-size: ${fontSize};
-      font-weight: ${fontWeight};
-      line-height: ${lineHeight};
-    `;
+    return {
+      gap: `${gap}px`,
+      fontSize: `${fontSize}px`,
+      fontWeight,
+      lineHeight
+    };
   }};
 
   &:disabled {
