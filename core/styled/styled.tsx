@@ -6,7 +6,6 @@ import convertToCssString from '@utils/convertCssString';
 import convertHash from '@utils/convertHash';
 
 import attributes from './attributes';
-import cache from './cache';
 import events from './events';
 import Inserter from './serialize/Inserter';
 import Updater from './serialize/Updater';
@@ -71,7 +70,6 @@ const styled: CreateStyledFunction = (Tag) => {
         return acc + curr;
       });
 
-      const collectedStyles = cache();
       const compactReducedStyle = reducedStyle.replace(/\s+/g, ' ').replace(/\n/g, '');
       const hashId = convertHash(compactReducedStyle);
       const className = `min-ui-css-${hashId}`;
@@ -79,8 +77,6 @@ const styled: CreateStyledFunction = (Tag) => {
       const content = isGlobalStyle
         ? compactReducedStyle
         : `.${className} {${compactReducedStyle}}`;
-
-      collectedStyles.push(content);
 
       delete newProps.theme;
 
