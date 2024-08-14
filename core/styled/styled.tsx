@@ -2,7 +2,7 @@ import { ElementType } from 'react';
 
 import InserterGuard from '@core/styled/serialize/InserterGuard';
 import light from '@core/theme/light';
-import camelToKebab from '@utils/camelToKebab';
+import convertToCssString from '@utils/convertCssString';
 import convertHash from '@utils/convertHash';
 
 import attributes from './attributes';
@@ -14,7 +14,8 @@ import {
   AsyncStyledValueSerialize,
   CreateStyledFunction,
   StyledValue,
-  StyledArrayFunctionWithoutTheme
+  StyledArrayFunctionWithoutTheme,
+  CSSObject
 } from './typing';
 
 // TODO 중복 로직 모듈화
@@ -56,11 +57,7 @@ const styled: CreateStyledFunction = (Tag) => {
             }
 
             return `${acc}${
-              currentStyledValue
-                ? Object.entries(currentStyledValue)
-                    .map(([k, v]) => `${camelToKebab(k)}:${v}`)
-                    .join(';')
-                : `[pending:${index}]`
+              currentStyledValue ? convertToCssString(currentStyledValue) : `[pending:${index}]`
             }${curr}`;
           }
 
@@ -68,9 +65,7 @@ const styled: CreateStyledFunction = (Tag) => {
             return `${acc}${styledValue}${curr}`;
           }
 
-          return `${acc}${Object.entries(styledValue)
-            .map(([k, v]) => `${camelToKebab(k)}:${v}`)
-            .join(';')}${curr}`;
+          return `${acc}${convertToCssString(styledValue as CSSObject)}${curr}`;
         }
 
         return acc + curr;

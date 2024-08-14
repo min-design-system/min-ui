@@ -40,7 +40,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
     return (
       <ToggleButton ref={ref} variant={variant} color={color} onlyIcon={isOnlyIcon} {...props}>
         {prefixIcon}
-        <Children>{children}</Children>
+        {children && <Children>{children}</Children>}
         {suffixIcon}
       </ToggleButton>
     );
@@ -50,7 +50,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
     return (
       <CTAButton ref={ref} variant={variant} color={color} onlyIcon={isOnlyIcon} {...props}>
         {prefixIcon}
-        <Children>{children}</Children>
+        {children && <Children>{children}</Children>}
         {suffixIcon}
       </CTAButton>
     );
@@ -65,7 +65,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(fun
       {...props}
     >
       {prefixIcon}
-      <Children>{children}</Children>
+      {children && <Children>{children}</Children>}
       {suffixIcon}
     </DefaultButton>
   );

@@ -39,11 +39,13 @@ export const TabItemContainer = styled.div<Pick<TabItemProps, 'selected'>>`
 
 export const DotContainer = styled.div`
   position: relative;
+  display: inline-flex;
+  justify-content: flex-end;
 `;
 
 export const Dot = styled.div`
-  position: absolute;
-  right: -4px;
+  position: fixed;
+  margin-right: -4px;
   width: 4px;
   height: 4px;
   border-radius: 50%;

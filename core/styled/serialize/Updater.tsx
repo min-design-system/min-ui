@@ -1,7 +1,7 @@
 import { useInsertionEffect } from 'react';
 
 import { AsyncStyledValueSerialize } from '@core/styled/typing';
-import camelToKebab from '@utils/camelToKebab';
+import convertToCssString from '@utils/convertCssString';
 import convertHash from '@utils/convertHash';
 
 interface UpdaterProps {
@@ -36,11 +36,7 @@ function Updater({ content, asyncStyledValueSerialize }: UpdaterProps) {
         newStyleElement.innerHTML = newStyleElement.innerHTML
           .replace(
             `[pending:${asKey}]`,
-            typeof styledValue === 'string'
-              ? styledValue
-              : Object.entries(styledValue)
-                  .map(([k, v]) => `${camelToKebab(k)}:${v}`)
-                  .join(';')
+            typeof styledValue === 'object' ? convertToCssString(styledValue) : styledValue
           )
           .replace(/\s+/g, ' ')
           .replace(/\n/g, '');

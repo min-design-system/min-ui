@@ -1,5 +1,5 @@
 import { AsyncStyledValueSerialize } from '@core/styled/typing';
-import camelToKebab from '@utils/camelToKebab';
+import convertToCssString from '@utils/convertCssString';
 import convertHash from '@utils/convertHash';
 
 interface InserterProps {
@@ -22,11 +22,7 @@ function Inserter({ content, asyncStyledValueSerialize }: InserterProps) {
       newContent = newContent
         .replace(
           `[pending:${asKey}]`,
-          typeof styledValue === 'string'
-            ? styledValue
-            : Object.entries(styledValue)
-                .map(([k, v]) => `${camelToKebab(k)}:${v}`)
-                .join(';')
+          typeof styledValue === 'object' ? convertToCssString(styledValue) : styledValue
         )
         .replace(/\s+/g, ' ')
         .replace(/\n/g, '');
