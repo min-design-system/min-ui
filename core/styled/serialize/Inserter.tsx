@@ -16,6 +16,8 @@ function Inserter({ content, asyncStyledValueSerialize }: InserterProps) {
     const promise = asyncStyledValueSerialize[asKey];
 
     promise?.then((styledValue) => {
+      if (!styledValue) return;
+
       newContent = newContent
         .replace(
           `[pending:${asKey}]`,

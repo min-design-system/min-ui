@@ -105,7 +105,6 @@ export const DefaultInputContainer = styled.div<
         border-color: ${border.danger};
       `;
     }
-    // TODO 빈 string 을 Return 하는 경우, 이후의 StyledArrowFunction 을 통한 CSS 속성이 적용되지 않는 문제 수정
     return '';
   }};
 `;
@@ -125,7 +124,6 @@ export const DefaultInput = styled.input`
     }) => contents.disabled};
   }
   &:disabled {
-    // TODO Icon color disabled 처리 필요
     cursor: not-allowed;
     color: ${({
       theme: {

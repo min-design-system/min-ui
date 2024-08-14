@@ -30,6 +30,8 @@ function Updater({ content, asyncStyledValueSerialize }: UpdaterProps) {
       const promise = asyncStyledValueSerialize[asKey];
 
       promise?.then((styledValue) => {
+        if (!styledValue) return;
+
         newStyleElement.innerHTML = newStyleElement.innerHTML
           .replace(
             `[pending:${asKey}]`,

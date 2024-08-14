@@ -38,9 +38,9 @@ const styled: CreateStyledFunction = (Tag) => {
           const styledValue = styledArrayFunction(newProps);
 
           if (Promise.resolve(styledValue) === styledValue) {
-            asyncStyledValueSerialize[index] = styledValue;
+            asyncStyledValueSerialize[index] = styledValue as Promise<StyledValue>;
 
-            styledValue.then((newStyledValue) => {
+            asyncStyledValueSerialize[index].then((newStyledValue) => {
               serializeStyledValues[index] = newStyledValue;
             });
 
@@ -61,6 +61,10 @@ const styled: CreateStyledFunction = (Tag) => {
 
           if (typeof styledValue === 'string') {
             return `${acc}${styledValue}${curr}`;
+          }
+
+          if (!styledValue) {
+            return '';
           }
 
           return `${acc}${Object.entries(styledValue)
@@ -109,7 +113,7 @@ const styled: CreateStyledFunction = (Tag) => {
 
           return null;
         })
-        .filter((filteredProp) => filteredProp)
+        .filter(Boolean)
         .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
       // TODO 더 나은 방법 고민
@@ -137,9 +141,7 @@ const styled: CreateStyledFunction = (Tag) => {
           <Updater content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />
           <FinalTag
             {...filteredProps}
-            className={[className, filteredProps?.className]
-              .filter((newClassName) => newClassName)
-              .join(' ')}
+            className={[className, filteredProps?.className].filter(Boolean).join(' ')}
           >
             <InserterGuard>
               <Inserter content={content} asyncStyledValueSerialize={asyncStyledValueSerialize} />

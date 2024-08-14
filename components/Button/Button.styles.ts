@@ -32,7 +32,6 @@ export const DefaultButton = styled.button<
   }) => {
     switch (color) {
       case 'secondary':
-        // TODO Return Type CSSProperties 추론이 가능하도록 수정
         return `
           background-color: ${surface.default};
           border-color: ${border.default};
@@ -115,7 +114,6 @@ export const DefaultButton = styled.button<
   }};
 
   &:disabled {
-    // TODO Icon color disabled 처리 필요
     cursor: not-allowed;
     border-color: transparent;
     background-color: ${({

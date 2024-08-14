@@ -1,8 +1,10 @@
 import { ComponentPropsWithRef, JSX, ReactElement } from 'react';
 
+import type { Properties } from 'csstype';
+
 import Theme from '@core/theme/typing';
 
-export type StyledValue = string | number;
+export type StyledValue = string | number | Properties | null;
 
 export type StyledProps<T extends keyof JSX.IntrinsicElements, P> = ComponentPropsWithRef<T> & {
   theme: Theme;
