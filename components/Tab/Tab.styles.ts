@@ -15,7 +15,7 @@ export const TabContainer = styled.div<Pick<TabProps, 'enableWide'>>`
 
   ${({ enableWide }) =>
     !enableWide
-      ? { gap: '12px' }
+      ? { maxWidth: 'fit-content', gap: '12px' }
       : {
           '& > div': {
             flexGrow: 1

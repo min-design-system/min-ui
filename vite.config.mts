@@ -8,7 +8,16 @@ import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
 
-const withUseClientChunkNameTokens = ['Updater', 'Client', 'InserterGuard'];
+const withUseClientChunkNameTokens = [
+  'Updater',
+  'Client',
+  'InserterGuard',
+  'Checkbox',
+  'Input',
+  'Radio',
+  'Switch',
+  'Tab'
+];
 const inputs = [
   {
     name: 'components',
